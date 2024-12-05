@@ -14,6 +14,12 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
+      # SECURITY: it's critical we do not check out the source pull request!
+      - name: Checkout the main branch
+        uses: actions/checkout@v3
+        with:
+          ref: main
+
       - name: Wait for checks to pass
         env:
           GH_TOKEN: ${{ github.token }}
@@ -22,12 +28,6 @@ jobs:
             echo "PR state failed?"
             exit 1
           fi
-
-      # SECURITY: it's critical we do not check out the source pull request!
-      - name: Checkout the main branch
-        uses: actions/checkout@v3
-        with:
-          ref: main
 
       # We need wgutils to be installed
       - run: yarn install
