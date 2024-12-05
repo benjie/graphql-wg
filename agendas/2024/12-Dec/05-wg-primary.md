@@ -111,6 +111,7 @@ hold additional secondary meetings later in the month.
 | Jovi De Croock   | @jovidecroock | Independent        | Aalst, BE             |
 | Rob Richard      | @robrichard   | 1stDibs            | New Jersey, US        |
 | Lenz Weber-Tronic| @phryneas     | Apollo             | Wuerzburg, DE         |
+| TEST             | @TEST         | TEST               | TEST                  |
 
 ## Agenda
 
@@ -153,3 +154,5 @@ hold additional secondary meetings later in the month.
    - [RFC](https://github.com/graphql/graphql-spec/pull/1056) - promote to RFC2? Merge as an editorial fix?
 1. Be explicit about list coercion (15m, Benjie)
    - [RFC](https://github.com/graphql/graphql-spec/pull/1058) - promote to RFC2? Merge as an editorial fix?
+1. TEST (5m, TEST)
+   - TEST
