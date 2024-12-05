@@ -24,7 +24,14 @@ jobs:
         env:
           GH_TOKEN: ${{ github.token }}
         run: |
-          if [[ "$(gh pr checks ${{ github.event.pull_request.number }} --fail-fast --watch --required --json bucket --jq '.state')" != "pass" ]]; then
+          CHECKS_OUTPUT="$(gh pr checks ${{ github.event.pull_request.number }} --fail-fast --watch --required --json bucket --jq '.state' 2>&1)"
+          CHECKS_STATUS=$?
+
+          if echo "$CHECKS_OUTPUT" | grep -q "no required checks reported"; then
+            # All good
+          elif [[ "$CHECKS_OUTPUT" == "pass" ]]; then
+            # All good
+          else
             echo "PR state failed?"
             exit 1
           fi
