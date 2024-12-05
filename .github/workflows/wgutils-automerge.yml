@@ -27,11 +27,11 @@ jobs:
           CHECKS_OUTPUT="$(gh pr checks ${{ github.event.pull_request.number }} --fail-fast --watch --required --json bucket --jq '.state' 2>&1 || true)"
 
           if echo "$CHECKS_OUTPUT" | grep -q "no required checks reported"; then
-            # All good
+            echo "Not required: $CHECKS_OUTPUT"
           elif [[ "$CHECKS_OUTPUT" == "pass" ]]; then
-            # All good
+            echo "$CHECKS_OUTPUT"
           else
-            echo "PR state failed?"
+            echo "PR state failed? $CHECKS_OUTPUT"
             exit 1
           fi
 
