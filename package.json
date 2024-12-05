@@ -3,7 +3,9 @@
     "gen-agenda": "wgutils agenda gen"
   },
   "devDependencies": {
+    "parse-diff": "^0.11.1",
     "prettier": "^2.1.2",
+    "typescript": "^5.7.2",
     "wgutils": "^1.1.0"
   },
   "prettier": {
