@@ -15,6 +15,8 @@ jobs:
 
     steps:
       - name: Wait for checks to pass
+        env:
+          GH_TOKEN: ${{ github.token }}
         run: |
           if [[ "$(gh pr checks ${{ github.event.pull_request.number }} --fail-fast --watch --required --json bucket --jq '.state')" != "pass" ]]; then
             echo "PR state failed?"
@@ -31,6 +33,8 @@ jobs:
       - run: yarn install
 
       - name: Automerge if wgutils approves
+        env:
+          GH_TOKEN: ${{ github.token }}
         run: |
           #if yarn wgutils can-automerge ${{ github.event.pull_request.number }}; then
           if node .github/test.mjs "${{ github.event.pull_request.number }}" "${{ github.event.pull_request.head.sha }}"; then
